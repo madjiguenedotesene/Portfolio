@@ -53,4 +53,4 @@ Je recherche un **CDI de Data Scientist, d’analyste SOC ou d’ingénieure sé
 - **Alternance** chez Eurosmart
 - **Fondatrice** de Fleurcadémique et de NEXUS
 
-<p align="center"><a href="https://madjiguenedotesene.github.io/madjiguenedotesene/"><b>👉 Voir le portfolio complet, illustré</b></a></p>
+<p align="center"><a href="https://madjiguenedotesene.github.io/Portfolio/"><b>👉 Voir le portfolio complet, illustré</b></a></p>
