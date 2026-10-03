@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Madjiguene SENE · Data, Cybersécurité & Entrepreneuriat</title>
+<meta name="description" content="Portfolio de Madjiguene Dote SENE : data science, cybersécurité et deux plateformes web en production (Fleurcadémique, NEXUS).">
+<meta property="og:title" content="Madjiguene SENE · Data, Cybersécurité & Entrepreneuriat">
+<meta property="og:description" content="Data science, SOC, PKI et deux plateformes web lancées : Fleurcadémique et NEXUS.">
+<meta property="og:image" content="assets/nexus-home.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230e1726'/><text x='16' y='21' font-family='monospace' font-size='14' font-weight='700' fill='%2334d3c3' text-anchor='middle'>MS</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f6f2; --surface:#ffffff; --sunk:#efeee8; --ink:#0e1726; --ink-2:#3c4657; --ink-3:#7a8394;
+  --line:#e3e1d9; --line-2:#d3d0c5;
+  --data:#3b5bdb; --data-soft:#e7ecfd;
+  --cyber:#0f7a74; --cyber-soft:#dcf2ef;
+  --biz:#c2416c; --biz-soft:#fbe6ee;
+  --signal:#34d3c3;
+  --shadow:0 1px 2px rgba(14,23,38,.05),0 14px 36px rgba(14,23,38,.08);
+  --f-d:'Sora',system-ui,sans-serif; --f-b:'IBM Plex Sans',system-ui,sans-serif; --f-m:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --paper:#0b111c; --surface:#121a28; --sunk:#0f1622; --ink:#eef1f6; --ink-2:#b7c0cf; --ink-3:#7f8a9d;
+  --line:#1f2a3b; --line-2:#2a374b; --data:#7c95ff; --data-soft:#1a2347; --cyber:#3fd0c2; --cyber-soft:#0f2e2c; --biz:#f07aa1; --biz-soft:#3a1626;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.35);
+}}
+:root[data-theme=dark]{
+  --paper:#0b111c; --surface:#121a28; --sunk:#0f1622; --ink:#eef1f6; --ink-2:#b7c0cf; --ink-3:#7f8a9d;
+  --line:#1f2a3b; --line-2:#2a374b; --data:#7c95ff; --data-soft:#1a2347; --cyber:#3fd0c2; --cyber-soft:#0f2e2c; --biz:#f07aa1; --biz-soft:#3a1626;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 36px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-d);line-height:1.1;letter-spacing:-.025em}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+@media(max-width:640px){.wrap{padding:0 16px}}
+.mono{font-family:var(--f-m)}
+:focus-visible{outline:2px solid var(--cyber);outline-offset:3px;border-radius:6px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-d);font-weight:700;letter-spacing:-.02em}
+.logo span.mk{width:32px;height:32px;border-radius:9px;background:var(--ink);color:var(--signal);display:grid;place-items:center;font-family:var(--f-m);font-size:13px;font-weight:600}
+:root[data-theme=dark] .logo span.mk{background:#1d2738}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .logo span.mk{background:#1d2738}}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{text-decoration:none;color:var(--ink-2);font-size:14.5px;padding:7px 11px;border-radius:8px}
+.nav-links a:hover{color:var(--ink);background:var(--sunk)}
+.theme-btn{border:1px solid var(--line-2);background:var(--surface);color:var(--ink);width:36px;height:36px;border-radius:9px;cursor:pointer;font-size:15px}
+@media(max-width:820px){.nav-links a:not(.keep){display:none}}
+
+/* hero */
+.hero{padding:72px 0 40px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:
+ radial-gradient(60% 60% at 90% 10%,color-mix(in srgb,var(--cyber) 14%,transparent),transparent 70%),
+ radial-gradient(50% 60% at 0% 100%,color-mix(in srgb,var(--data) 10%,transparent),transparent 70%);pointer-events:none}
+.hero .wrap{position:relative}
+.hero .wrap.top{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center}
+@media(max-width:900px){.hero .wrap.top{grid-template-columns:1fr}.hero{padding-top:48px}}
+.kicker{display:inline-flex;gap:8px;align-items:center;font-family:var(--f-m);font-size:12.5px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px color-mix(in srgb,#22c55e 25%,transparent)}
+.hero h1{font-size:clamp(38px,5.4vw,62px);font-weight:800;margin:22px 0 18px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--data),var(--cyber) 55%,var(--biz));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:18px;color:var(--ink-2);max-width:600px}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 28px}
+.chip{font-family:var(--f-m);font-size:12.5px;padding:5px 10px;border-radius:7px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);white-space:nowrap}
+.chip.d{border-color:transparent;background:var(--data-soft);color:var(--data)}
+.chip.c{border-color:transparent;background:var(--cyber-soft);color:var(--cyber)}
+.chip.b{border-color:transparent;background:var(--biz-soft);color:var(--biz)}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:11px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-p{background:var(--ink);color:var(--paper)}
+.btn-g{background:var(--surface);border-color:var(--line-2);color:var(--ink)}
+.btn svg{width:17px;height:17px}
+
+.term{background:#0e1726;color:#d6deeb;border-radius:18px;box-shadow:var(--shadow);overflow:hidden;border:1px solid #1d2738}
+.term-bar{display:flex;gap:6px;padding:12px 14px;border-bottom:1px solid #1d2738;align-items:center}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar span{margin-left:auto;font-family:var(--f-m);font-size:12px;color:#7f8a9d}
+.term-body{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:18px}
+.term-body img{width:96px;height:96px;border-radius:14px;object-fit:cover;border:2px solid #1d2738}
+.term pre{font-family:var(--f-m);font-size:13px;line-height:1.75;white-space:pre-wrap;margin:0;grid-column:1/-1}
+.term .p{color:#34d3c3}.term .k{color:#7c95ff}.term .s{color:#f07aa1}.term .m{color:#7f8a9d}
+.term h3{font-size:18px;color:#fff;margin-bottom:2px}
+.term .who small{display:block;color:#9aa6b8;font-size:13px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+@media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat b{display:block;font-family:var(--f-d);font-size:30px;letter-spacing:-.03em}
+.stat span{font-size:13.5px;color:var(--ink-2)}
+
+/* sections */
+section{padding:76px 0}
+.sec-head{max-width:720px;margin-bottom:34px}
+.eyebrow{font-family:var(--f-m);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;display:inline-flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:18px;height:2px;background:currentColor}
+.e-d{color:var(--data)}.e-c{color:var(--cyber)}.e-b{color:var(--biz)}.e-n{color:var(--ink-3)}
+h2{font-size:clamp(28px,4vw,42px);font-weight:700}
+.sec-head p{color:var(--ink-2);margin-top:12px;font-size:17px}
+.alt{background:var(--sunk);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.pillars{grid-template-columns:1fr}}
+.pillar{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative;overflow:hidden}
+.pillar::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
+.pillar h3{font-size:20px;margin:12px 0 8px}
+.pillar p{color:var(--ink-2);font-size:15px}
+.pillar ul{list-style:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.ico{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:var(--cs);color:var(--c)}
+.ico svg{width:21px;height:21px}
+
+/* feature (entreprendre) */
+.feature{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+.feature + .feature{margin-top:24px}
+.feature.rev{grid-template-columns:1fr 1.1fr}
+.feature.rev .shots{order:2}
+@media(max-width:900px){.feature,.feature.rev{grid-template-columns:1fr;padding:18px}.feature.rev .shots{order:0}}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.shots figure:first-child{grid-column:1/-1}
+figure{border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--sunk);cursor:zoom-in;position:relative}
+figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10;transition:transform .35s}
+figure:hover img{transform:scale(1.025)}
+figcaption{position:absolute;left:8px;bottom:8px;font-family:var(--f-m);font-size:11.5px;background:rgba(14,23,38,.78);color:#fff;padding:3px 8px;border-radius:6px}
+.feature h3{font-size:28px;margin:10px 0 6px}
+.role{font-family:var(--f-m);font-size:13px;color:var(--ink-3);margin-bottom:14px}
+.feature p{color:var(--ink-2)}
+.points{list-style:none;display:grid;gap:9px;margin:18px 0}
+.points li{display:grid;grid-template-columns:20px 1fr;gap:8px;font-size:15px;color:var(--ink-2)}
+.points li::before{content:'→';color:var(--c);font-family:var(--f-m);font-weight:600}
+.points b{color:var(--ink)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 20px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.lnk{display:inline-flex;align-items:center;gap:6px;font-weight:600;text-decoration:none;color:var(--c);font-size:15px}
+.lnk:hover{text-decoration:underline}
+
+/* project cards */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.card figure{border:0;border-radius:0;border-bottom:1px solid var(--line)}
+.card figure img{aspect-ratio:16/9}
+.card .body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.card .meta{font-family:var(--f-m);font-size:12px;color:var(--ink-3);display:flex;gap:10px;flex-wrap:wrap}
+.card h3{font-size:20px;margin:8px 0 8px}
+.card p{color:var(--ink-2);font-size:15px}
+.result{margin:14px 0 4px;padding:11px 13px;border-radius:10px;background:var(--cs);color:var(--ink);font-size:14.5px;border-left:3px solid var(--c)}
+.result b{color:var(--c)}
+.card .tags{margin:14px 0 16px}
+.card .links{margin-top:auto}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+@media(max-width:860px){.mini{grid-template-columns:1fr}}
+.mini .card .body{padding:18px}
+.mini h3{font-size:17px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.skills{grid-template-columns:1fr}}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.skill h3{font-size:16px;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.skill dl{display:grid;gap:10px}
+.skill dt{font-family:var(--f-m);font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+.skill dd{font-size:14.5px;color:var(--ink)}
+
+/* timeline */
+.tl{position:relative;display:grid;gap:14px;max-width:820px}
+.tl-item{display:grid;grid-template-columns:150px 1fr;gap:20px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+@media(max-width:640px){.tl-item{grid-template-columns:1fr;gap:6px}}
+.tl-item time{font-family:var(--f-m);font-size:13px;color:var(--ink-3)}
+.tl-item h3{font-size:17px}
+.tl-item p{color:var(--ink-2);font-size:15px;margin-top:4px}
+
+/* contact */
+.contact{background:var(--ink);color:var(--paper);border-radius:26px;padding:48px 36px;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
+:root[data-theme=dark] .contact{background:#121a28;color:var(--ink);border:1px solid var(--line)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .contact{background:#121a28;color:var(--ink);border:1px solid var(--line)}}
+@media(max-width:820px){.contact{grid-template-columns:1fr;padding:32px 22px}}
+.contact h2{color:inherit}
+.contact p{opacity:.8;margin-top:10px}
+.contact .btns{justify-content:flex-start}
+.contact .btn-p{background:var(--signal);color:#0e1726}
+.contact .btn-g{background:transparent;color:inherit;border-color:rgba(255,255,255,.25)}
+footer{padding:30px 0 50px;color:var(--ink-3);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(6,10,18,.88);display:none;align-items:center;justify-content:center;padding:24px;z-index:100;cursor:zoom-out}
+.lb.on{display:flex}
+.lb img{max-height:88vh;max-width:min(1300px,100%);border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb p{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#d6deeb;font-family:var(--f-m);font-size:13px}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-data" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M14 4c3-1 6 0 6 0s1 3 0 6l-7 7-6-6 7-7z"/><circle cx="15" cy="9" r="1.5"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.84-2.05 3.78-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2S12.8 13.5 12.8 15.1V21H9z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0112 6.84c.85 0 1.71.11 2.51.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M10 14L20 4"/><path d="M20 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1h5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 00-1 1v16a1 1 0 001 1h12a1 1 0 001-1V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="mk">MS</span> Madjiguene SENE</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#entreprendre">Entreprendre</a>
+      <a href="#data">Data</a>
+      <a href="#cyber">Cyber</a>
+      <a href="#competences">Compétences</a>
+      <a href="#contact" class="keep">Contact</a>
+      <button class="theme-btn" id="theme" type="button" aria-label="Changer de thème">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap top">
+      <div>
+        <span class="kicker"><span class="dot"></span> Ouverte à un CDI · Data Scientist / Cybersécurité</span>
+        <h1>Je transforme la donnée en <em>décisions sûres</em>, et les idées en produits.</h1>
+        <p class="lead">Master 2 Cybersécurité &amp; Science des Données à l’Université Paris&nbsp;8. Je modélise, je sécurise, et j’ai lancé deux plateformes web utilisées par de vrais clients : <b>Fleurcadémique</b> et <b>NEXUS</b>.</p>
+        <div class="roles">
+          <span class="chip d">Machine Learning · R · Python</span>
+          <span class="chip c">SOC · SIEM · PKI</span>
+          <span class="chip b">Fondatrice · Produit</span>
+        </div>
+        <div class="btns">
+          <a class="btn btn-p" href="#entreprendre">Voir mes projets</a>
+          <a class="btn btn-g" href="https://www.linkedin.com/in/ma-sene/" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg> LinkedIn</a>
+          <a class="btn btn-g" href="https://github.com/madjiguenedotesene" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg> GitHub</a>
+        </div>
+      </div>
+
+      <div class="term reveal" aria-label="Carte de profil">
+        <div class="term-bar"><i></i><i></i><i></i><span>~/portfolio</span></div>
+        <div class="term-body">
+          <img src="assets/portrait.jpg" alt="Portrait de Madjiguene SENE" width="96" height="96">
+          <div class="who"><h3>Madjiguene Dote SENE</h3><small>Data · Cyber · Entrepreneuriat</small><small>Paris, France · Dakar, Sénégal</small></div>
+<pre><span class="p">$</span> whoami --skills
+<span class="k">data</span>   = [<span class="s">"R"</span>, <span class="s">"Python"</span>, <span class="s">"scikit-learn"</span>, <span class="s">"PySpark"</span>]
+<span class="k">cyber</span>  = [<span class="s">"Suricata"</span>, <span class="s">"ELK"</span>, <span class="s">"Fail2Ban"</span>, <span class="s">"OpenSSL/PKI"</span>]
+<span class="k">build</span>  = [<span class="s">"React"</span>, <span class="s">"Node"</span>, <span class="s">"Flask"</span>, <span class="s">"Render"</span>]
+<span class="p">$</span> cat status
+<span class="m"># Master 2 CSSD · Paris 8 · 2025-2026</span>
+<span class="m"># 2 plateformes en production</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat reveal"><b>2</b><span>plateformes web lancées et en ligne</span></div>
+        <div class="stat reveal"><b>0,90</b><span>AUC de mon modèle de prévision des pics d’ozone</span></div>
+        <div class="stat reveal"><b>1</b><span>SOC complet déployé : détection → blocage automatique</span></div>
+        <div class="stat reveal"><b>7</b><span>rapports techniques publiés sur GitHub</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILIERS -->
+  <section class="alt" aria-labelledby="t-profil">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow e-n">Profil</span>
+        <h2 id="t-profil">Trois compétences, un même fil : construire des systèmes fiables</h2>
+      </div>
+      <div class="pillars">
+        <article class="pillar reveal" style="--c:var(--data);--cs:var(--data-soft)">
+          <span class="ico"><svg><use href="#i-data"/></svg></span>
+          <h3>Data Science</h3>
+          <p>De l’analyse exploratoire au modèle comparé et validé : régularisation, méthodes d’ensemble, réseaux de neurones, simulation de Monte-Carlo, traitement distribué avec Spark.</p>
+          <ul><li class="chip d">R</li><li class="chip d">Python</li><li class="chip d">PySpark</li><li class="chip d">ML</li></ul>
+        </article>
+        <article class="pillar reveal" style="--c:var(--cyber);--cs:var(--cyber-soft)">
+          <span class="ico"><svg><use href="#i-shield"/></svg></span>
+          <h3>Cybersécurité</h3>
+          <p>Supervision et réponse à incident (IDS/IPS, SIEM, tableaux de bord), chiffrement des échanges avec une PKI maison, analyse de trafic et durcissement de serveurs Linux.</p>
+          <ul><li class="chip c">Suricata</li><li class="chip c">ELK</li><li class="chip c">PKI / TLS</li><li class="chip c">Wireshark</li></ul>
+        </article>
+        <article class="pillar reveal" style="--c:var(--biz);--cs:var(--biz-soft)">
+          <span class="ico"><svg><use href="#i-rocket"/></svg></span>
+          <h3>Entrepreneuriat</h3>
+          <p>Deux plateformes conçues, développées et mises en ligne : du besoin client au paiement en ligne, avec intégration d’API publiques et automatisation des tâches répétitives.</p>
+          <ul><li class="chip b">Produit</li><li class="chip b">React</li><li class="chip b">API</li><li class="chip b">Paiement</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTREPRENDRE -->
+  <section id="entreprendre" aria-labelledby="t-biz">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow e-b">Entreprendre</span>
+        <h2 id="t-biz">Deux plateformes en production</h2>
+        <p>Des produits réels, pensés pour des utilisateurs réels, avec paiement, formulaires, emails et intégrations d’API.</p>
+      </div>
+
+      <article class="feature reveal" style="--c:var(--biz)">
+        <div class="shots">
+          <figure><img src="assets/fleur-home.jpg" alt="Page d’accueil de Fleurcadémique" loading="lazy"><figcaption>fleurcademique.fr</figcaption></figure>
+          <figure style="grid-column:1/-1"><img src="assets/fleur-services.jpg" alt="Services de Fleurcadémique" loading="lazy"><figcaption>Services</figcaption></figure>
+        </div>
+        <div>
+          <span class="chip b">Fondatrice · entreprise immatriculée</span>
+          <h3>Fleurcadémique</h3>
+          <div class="role">Plateforme de soutien scolaire · élèves, familles, professeurs</div>
+          <p>Une plateforme qui met en relation élèves et professeurs vérifiés, du CP au supérieur, à domicile ou en ligne, et qui gère toute la partie administrative à leur place.</p>
+          <ul class="points">
+            <li><span><b>Trois publics</b> : élèves et familles, professeurs, et un espace étudiant (CV, lettres, candidatures).</span></li>
+            <li><span><b>Parcours complet</b> : inscription, contrat signé en ligne, paiement par carte ou virement, versement mensuel des professeurs.</span></li>
+            <li><span><b>Suivi pédagogique</b> : cours pointés, exercices corrigés et notés, suivi des progrès, classes virtuelles et messagerie.</span></li>
+          </ul>
+          <div class="links">
+            <a class="lnk" href="https://www.fleurcademique.fr" target="_blank" rel="noopener">Voir le site <svg width="15" height="15"><use href="#i-ext"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="feature rev reveal" style="--c:var(--biz)">
+        <div class="shots">
+          <figure><img src="assets/nexus-home.jpg" alt="Page d’accueil de NEXUS" loading="lazy"><figcaption>NEXUS · accueil</figcaption></figure>
+          <figure><img src="assets/nexus-cv.jpg" alt="Éditeur de CV Anti-ATS avec score" loading="lazy"><figcaption>CV Anti-ATS + score</figcaption></figure>
+          <figure><img src="assets/nexus-pay.jpg" alt="Paiement intégré multi-moyens" loading="lazy"><figcaption>Paiement intégré</figcaption></figure>
+        </div>
+        <div>
+          <span class="chip b">Fondatrice · développement full-stack</span>
+          <h3>NEXUS</h3>
+          <div class="role">Plateforme carrière : CV, candidatures, Campus France</div>
+          <p>Un service pour les candidats en France et au Sénégal : un éditeur de CV compatible avec les logiciels de tri des recruteurs, des campagnes de candidatures spontanées et un accompagnement Campus France.</p>
+          <ul class="points">
+            <li><span><b>Éditeur de CV Anti-ATS</b> avec aperçu A4 en direct, score de conformité sur 12 critères et export PDF.</span></li>
+            <li><span><b>API France Travail</b> (OAuth2) : recherche d’offres en temps réel via un micro-service Flask, avec mise en cache du jeton.</span></li>
+            <li><span><b>Paiement intégré</b> : carte (Stripe Checkout), PayPal, Wave, Wero et virement, avec référence de commande et vérification côté serveur.</span></li>
+            <li><span><b>Automatisation</b> : un script Python/Selenium de candidatures porté en extension Chrome (Manifest V3), utilisée en interne par l’équipe.</span></li>
+            <li><span><b>Sécurité dès la conception</b> : aucun mot de passe client collecté ni stocké, échappement HTML des emails, liste blanche CORS.</span></li>
+          </ul>
+          <div class="tags">
+            <span class="chip">React</span><span class="chip">Vite</span><span class="chip">Node / Express</span><span class="chip">Flask</span><span class="chip">Stripe</span><span class="chip">Resend</span><span class="chip">Chrome MV3</span><span class="chip">Render</span>
+          </div>
+          <div class="links">
+            <a class="lnk" href="https://nexus-ob.onrender.com" target="_blank" rel="noopener">Voir le site <svg width="15" height="15"><use href="#i-ext"/></svg></a>
+            <a class="lnk" href="https://github.com/madjiguenedotesene/NEXUS" target="_blank" rel="noopener">Code source <svg width="15" height="15"><use href="#i-gh"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- DATA -->
+  <section id="data" class="alt" aria-labelledby="t-data">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow e-d">Data Science</span>
+        <h2 id="t-data">Modéliser, comparer, expliquer</h2>
+        <p>Chaque projet suit la même méthode : comprendre les données, tester plusieurs modèles, et justifier le choix final avec des métriques.</p>
+      </div>
+      <div class="grid">
+        <article class="card reveal" style="--c:var(--data);--cs:var(--data-soft)">
+          <figure><img src="assets/ozone-roc.jpg" alt="Courbes ROC comparant Random Forest, SVM et régression logistique" loading="lazy"><figcaption>Courbes ROC finales</figcaption></figure>
+          <div class="body">
+            <div class="meta"><span>Master 2 · IA</span><span>R</span><span>23 pages</span></div>
+            <h3>Prévision des pics d’ozone</h3>
+            <p>Prévoir les dépassements du seuil d’ozone à partir des prévisions du modèle physique MOCAGE et des données météo : EDA, ACP, régression linéaire et LASSO, logistique, kNN, SVM, arbres, Random Forest, boosting et réseaux de neurones.</p>
+            <div class="result"><b>AUC ≈ 0,90</b> pour les modèles statistiques contre <b>≈ 0,75</b> pour la prévision brute MOCAGE : l’IA améliore nettement la détection des pics.</div>
+            <div class="tags"><span class="chip d">ACP</span><span class="chip d">LASSO</span><span class="chip d">SVM</span><span class="chip d">Random Forest</span><span class="chip d">Boosting</span><span class="chip d">ROC / AUC</span></div>
+            <div class="links"><a class="lnk" style="--c:var(--data)" href="https://github.com/madjiguenedotesene/projet_academic/blob/main/Projet_OZONE.pdf" target="_blank" rel="noopener"><svg width="15" height="15"><use href="#i-doc"/></svg> Lire le rapport</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" style="--c:var(--data);--cs:var(--data-soft)">
+          <figure><img src="assets/ml-ridge-lasso.jpg" alt="Comparaison Ridge et Lasso selon alpha" loading="lazy"><figcaption>Ridge vs Lasso</figcaption></figure>
+          <div class="body">
+            <div class="meta"><span>Master 2 · Apprentissage</span><span>Python</span><span>19 pages</span></div>
+            <h3>Régularisation & simulation de Monte-Carlo</h3>
+            <p>Comment éviter le surapprentissage : étude de l’effet du paramètre α sur les régressions Ridge, Lasso et Elastic Net, puis estimation statistique par simulation de Monte-Carlo (N = 10 000).</p>
+            <div class="result"><b>Ridge</b> conserve la forme globale du signal, <b>Lasso</b> isole les variables vraiment utiles : le bon choix dépend de l’objectif (stabilité ou sélection).</div>
+            <div class="tags"><span class="chip d">scikit-learn</span><span class="chip d">Ridge</span><span class="chip d">Lasso</span><span class="chip d">Elastic Net</span><span class="chip d">Monte-Carlo</span></div>
+            <div class="links"><a class="lnk" style="--c:var(--data)" href="https://github.com/madjiguenedotesene/projet_academic/blob/main/Projet_Machine_Learning.pdf" target="_blank" rel="noopener"><svg width="15" height="15"><use href="#i-doc"/></svg> Lire le rapport</a></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mini">
+        <article class="card reveal" style="--c:var(--data);--cs:var(--data-soft)">
+          <figure><img src="assets/ozone-rf.jpg" alt="Importance des variables Random Forest" loading="lazy"><figcaption>Importance des variables</figcaption></figure>
+          <div class="body"><h3>Interprétabilité</h3><p>Variables les plus influentes du Random Forest (%IncMSE) pour expliquer les prévisions d’ozone.</p></div>
+        </article>
+        <article class="card reveal" style="--c:var(--data);--cs:var(--data-soft)">
+          <figure><img src="assets/ozone-acp.jpg" alt="ACP des individus, jours avec et sans pic" loading="lazy"><figcaption>ACP · 70,8 % d’inertie</figcaption></figure>
+          <div class="body"><h3>Analyse en composantes principales</h3><p>Séparation des jours avec et sans pic d’ozone sur les deux premiers axes.</p></div>
+        </article>
+        <article class="card reveal" style="--c:var(--data);--cs:var(--data-soft)">
+          <figure><img src="assets/ml-montecarlo.jpg" alt="Distribution Monte-Carlo et intervalle de confiance" loading="lazy"><figcaption>Monte-Carlo · N = 10 000</figcaption></figure>
+          <div class="body"><h3>Simulation de Monte-Carlo</h3><p>Estimation d’une moyenne et de son intervalle de confiance à 95 % par tirages répétés.</p></div>
+        </article>
+      </div>
+      <div class="grid" style="margin-top:18px">
+        <article class="card reveal" style="--c:var(--data);--cs:var(--data-soft)">
+          <div class="body">
+            <div class="meta"><span>Big Data</span><span>PySpark</span></div>
+            <h3>Apache Spark / PySpark</h3>
+            <p>Guide complet appliqué au jeu de données e-commerce Olist : DataFrames, transformations, agrégations, jointures et Spark SQL.</p>
+            <div class="tags"><span class="chip d">PySpark</span><span class="chip d">Spark SQL</span><span class="chip d">Olist</span></div>
+            <div class="links"><a class="lnk" style="--c:var(--data)" href="https://github.com/madjiguenedotesene/projet_academic/blob/main/Spark.pdf" target="_blank" rel="noopener"><svg width="15" height="15"><use href="#i-doc"/></svg> Lire</a></div>
+          </div>
+        </article>
+        <article class="card reveal" style="--c:var(--data);--cs:var(--data-soft)">
+          <div class="body">
+            <div class="meta"><span>IoT · Innovation</span><span>Étude produit</span></div>
+            <h3>Capteur d’engagement client</h3>
+            <p>Conception d’un capteur multi-technologies pour mesurer l’engagement en magasin : besoin, étude de marché, ergonomie, architecture technique, données et IA.</p>
+            <div class="tags"><span class="chip d">IoT</span><span class="chip d">Architecture</span><span class="chip d">Étude de marché</span></div>
+            <div class="links"><a class="lnk" style="--c:var(--data)" href="https://github.com/madjiguenedotesene/projet_academic/blob/main/Projet_Internet_des_Objets.pdf" target="_blank" rel="noopener"><svg width="15" height="15"><use href="#i-doc"/></svg> Lire</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CYBER -->
+  <section id="cyber" aria-labelledby="t-cyber">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow e-c">Cybersécurité</span>
+        <h2 id="t-cyber">Détecter, bloquer, prouver</h2>
+        <p>Des infrastructures montées de bout en bout, testées par des attaques simulées, et documentées avec les captures qui le prouvent.</p>
+      </div>
+      <div class="grid">
+        <article class="card reveal" style="--c:var(--cyber);--cs:var(--cyber-soft)">
+          <figure><img src="assets/soc-kibana.jpg" alt="Alertes Suricata dans Kibana" loading="lazy"><figcaption>Kibana · alertes Suricata</figcaption></figure>
+          <div class="body">
+            <div class="meta"><span>Sécurité des réseaux</span><span>Équipe de 3</span><span>Janv. 2026</span></div>
+            <h3>Mini-SOC : de la détection au blocage automatique</h3>
+            <p>Conception d’un centre de supervision pour un client fictif : sonde Suricata, collecte Filebeat, Elasticsearch/Kibana sécurisés en TLS, réponse automatique Fail2Ban et tableaux de bord Grafana. Validation par une attaque brute-force simulée (Hydra).</p>
+            <div class="result">Chaîne complète <b>Identifier → Détecter → Répondre</b> : l’IP attaquante est <b>bannie automatiquement</b> et la connexion refusée, preuve à l’appui dans Wireshark et Kibana.</div>
+            <div class="tags"><span class="chip c">Suricata</span><span class="chip c">Filebeat</span><span class="chip c">Elasticsearch</span><span class="chip c">Kibana</span><span class="chip c">Fail2Ban</span><span class="chip c">Grafana</span></div>
+            <div class="links"><a class="lnk" style="--c:var(--cyber)" href="https://github.com/madjiguenedotesene/projet_academic/blob/main/Projet_Mini_SOC.pdf" target="_blank" rel="noopener"><svg width="15" height="15"><use href="#i-doc"/></svg> Lire le rapport</a></div>
+          </div>
+        </article>
+
+        <article class="card reveal" style="--c:var(--cyber);--cs:var(--cyber-soft)">
+          <figure><img src="assets/ftps-tls.jpg" alt="Trafic FTPS chiffré TLS dans Wireshark" loading="lazy"><figcaption>Wireshark · trafic TLS</figcaption></figure>
+          <div class="body">
+            <div class="meta"><span>Sécurité des protocoles</span><span>Binôme</span><span>Déc. 2025</span></div>
+            <h3>Sécuriser FTP avec une PKI (FTPS)</h3>
+            <p>Démonstration du risque (mot de passe FTP lisible en clair dans Wireshark), puis création d’une autorité de certification avec OpenSSL, signature du certificat serveur, durcissement de vsftpd sous Kali Linux et validation avec FileZilla.</p>
+            <div class="result">Avant : identifiants <b>visibles en clair</b>. Après : session <b>entièrement chiffrée en TLS</b>, vérifiée dans les journaux FileZilla et la capture réseau.</div>
+            <div class="tags"><span class="chip c">OpenSSL</span><span class="chip c">PKI / CA</span><span class="chip c">vsftpd</span><span class="chip c">TLS</span><span class="chip c">Wireshark</span></div>
+            <div class="links"><a class="lnk" style="--c:var(--cyber)" href="https://github.com/madjiguenedotesene/projet_academic/blob/main/Projet_Protocole_s%C3%A9curit%C3%A9%20(1)%20(1).pdf" target="_blank" rel="noopener"><svg width="15" height="15"><use href="#i-doc"/></svg> Lire le rapport</a></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mini">
+        <article class="card reveal" style="--c:var(--cyber);--cs:var(--cyber-soft)">
+          <figure><img src="assets/soc-grafana.jpg" alt="Tableau de bord Grafana" loading="lazy"><figcaption>Grafana</figcaption></figure>
+          <div class="body"><h3>Supervision Grafana</h3><p>Métriques de sécurité en temps réel branchées sur Elasticsearch.</p></div>
+        </article>
+        <article class="card reveal" style="--c:var(--cyber);--cs:var(--cyber-soft)">
+          <figure><img src="assets/soc-wireshark.jpg" alt="Analyse Wireshark d’une attaque" loading="lazy"><figcaption>Analyse de flux</figcaption></figure>
+          <div class="body"><h3>Analyse de trafic</h3><p>Lecture des paquets pendant l’attaque simulée puis confirmation du blocage.</p></div>
+        </article>
+        <article class="card reveal" style="--c:var(--cyber);--cs:var(--cyber-soft)">
+          <figure><img src="assets/bitcoin.jpg" alt="Présentation Bitcoin et souveraineté" loading="lazy"><figcaption>Présentation</figcaption></figure>
+          <div class="body">
+            <h3>Bitcoin & souveraineté numérique</h3>
+            <p>Analyse géopolitique : réserves stratégiques, contournement des sanctions, minage et énergie, euro numérique.</p>
+            <div class="links" style="margin-top:12px"><a class="lnk" style="--c:var(--cyber)" href="https://github.com/madjiguenedotesene/projet_academic/blob/main/Projet_bitcoin.pptx" target="_blank" rel="noopener"><svg width="15" height="15"><use href="#i-doc"/></svg> Voir</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENCES -->
+  <section id="competences" class="alt" aria-labelledby="t-skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow e-n">Compétences</span>
+        <h2 id="t-skills">Ce que j’ai pratiqué, projets à l’appui</h2>
+      </div>
+      <div class="skills">
+        <div class="skill reveal">
+          <h3><span class="ico" style="--c:var(--data);--cs:var(--data-soft);width:34px;height:34px"><svg width="18" height="18"><use href="#i-data"/></svg></span> Data</h3>
+          <dl>
+            <div><dt>Langages</dt><dd>R, Python, SQL</dd></div>
+            <div><dt>Modélisation</dt><dd>Régression linéaire, LASSO, Ridge, logistique, kNN, SVM, arbres, Random Forest, boosting, réseaux de neurones</dd></div>
+            <div><dt>Statistiques</dt><dd>ACP, tests, Monte-Carlo, ROC/AUC, validation croisée</dd></div>
+            <div><dt>Big Data</dt><dd>Apache Spark, PySpark, Spark SQL</dd></div>
+          </dl>
+        </div>
+        <div class="skill reveal">
+          <h3><span class="ico" style="--c:var(--cyber);--cs:var(--cyber-soft);width:34px;height:34px"><svg width="18" height="18"><use href="#i-shield"/></svg></span> Cybersécurité</h3>
+          <dl>
+            <div><dt>Détection & réponse</dt><dd>Suricata (IDS), Fail2Ban (IPS), Elasticsearch, Kibana, Filebeat, Grafana</dd></div>
+            <div><dt>Cryptographie</dt><dd>PKI, autorité de certification, OpenSSL, TLS, FTPS</dd></div>
+            <div><dt>Réseau</dt><dd>Wireshark, analyse de flux, tests d’intrusion (Hydra) en laboratoire</dd></div>
+            <div><dt>Systèmes</dt><dd>Linux (Ubuntu, Kali), durcissement, gestion des droits</dd></div>
+          </dl>
+        </div>
+        <div class="skill reveal">
+          <h3><span class="ico" style="--c:var(--biz);--cs:var(--biz-soft);width:34px;height:34px"><svg width="18" height="18"><use href="#i-rocket"/></svg></span> Produit & web</h3>
+          <dl>
+            <div><dt>Front</dt><dd>React, Vite, JavaScript, HTML/CSS</dd></div>
+            <div><dt>Back & API</dt><dd>Node.js / Express, Flask, OAuth2, API France Travail, Stripe, Resend</dd></div>
+            <div><dt>Automatisation</dt><dd>Selenium, extensions Chrome (Manifest V3)</dd></div>
+            <div><dt>Entreprise</dt><dd>Création d’entreprise, offre et tarifs, paiement en ligne, relation client</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARCOURS -->
+  <section aria-labelledby="t-tl">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow e-n">Parcours</span>
+        <h2 id="t-tl">Formation et expériences</h2>
+      </div>
+      <div class="tl">
+        <div class="tl-item reveal"><time>2025 – 2026</time><div><h3>Master 2 Cybersécurité & Science des Données</h3><p>Université Paris 8 Vincennes – Saint-Denis : IA, apprentissage statistique, sécurité des réseaux et des protocoles, big data.</p></div></div>
+        <div class="tl-item reveal"><time>Alternance</time><div><h3>Eurosmart</h3><p>Expérience en alternance en parallèle du Master.</p></div></div>
+        <div class="tl-item reveal"><time>En cours</time><div><h3>Fondatrice · Fleurcadémique</h3><p>Plateforme de soutien scolaire à domicile et en ligne, entreprise immatriculée.</p></div></div>
+        <div class="tl-item reveal"><time>En cours</time><div><h3>Fondatrice · NEXUS</h3><p>Plateforme carrière : CV Anti-ATS, candidatures spontanées et accompagnement Campus France.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding-top:20px">
+    <div class="wrap">
+      <div class="contact reveal">
+        <div>
+          <span class="eyebrow" style="color:var(--signal)">Contact</span>
+          <h2>Vous recrutez en data ou en cybersécurité ?</h2>
+          <p>Je recherche un CDI de Data Scientist, d’analyste SOC ou d’ingénieure sécurité. Parlons de votre équipe.</p>
+        </div>
+        <div class="btns">
+          <a class="btn btn-p" href="mailto:madjiguenesene20@gmail.com"><svg><use href="#i-mail"/></svg> madjiguenesene20@gmail.com</a>
+          <a class="btn btn-g" href="https://www.linkedin.com/in/madjiguene-dote-sene/" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg> LinkedIn</a>
+          <a class="btn btn-g" href="https://github.com/madjiguenedotesene" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="y"></span> Madjiguene Dote SENE</span><span class="mono">Data · Cyber · Entrepreneuriat</span></div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image agrandie"><img alt=""><p></p></div>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+// Thème clair / sombre (mémorisé si possible)
+(function(){
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t } catch (e) {}
+  document.getElementById('theme').addEventListener('click', () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme) } catch (e) {}
+  });
+})();
+// Apparition au défilement
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), { rootMargin: '0px 0px -40px' });
+document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+// Agrandir les images
+const lb = document.getElementById('lb');
+document.querySelectorAll('figure img').forEach((img) => img.parentElement.addEventListener('click', () => {
+  lb.querySelector('img').src = img.src; lb.querySelector('img').alt = img.alt;
+  lb.querySelector('p').textContent = img.alt; lb.classList.add('on');
+}));
+lb.addEventListener('click', () => lb.classList.remove('on'));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lb.classList.remove('on') });
+</script>
+</body>
+</html>
